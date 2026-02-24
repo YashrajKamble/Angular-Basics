@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-todos',
-  imports: [],
+  standalone: true,
   templateUrl: './todos.html',
-  styleUrl: './todos.css',
+  styleUrls: ['./todos.css'],
 })
 export class Todos {
 

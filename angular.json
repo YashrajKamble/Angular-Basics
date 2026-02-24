@@ -25,7 +25,7 @@
               }
             ],
             "styles": ["src/styles.css", "./node_modules/bootstrap/dist/css/bootstrap.min.css"],
-            "scripts": ["src/styles.css", "./node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": ["src/styles.css", "./node_modules/bootstrap/dist/js/bootstrap.js"]
           },
           "configurations": {
             "production": {
