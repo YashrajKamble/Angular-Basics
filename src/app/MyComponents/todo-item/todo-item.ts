@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from '../../Todo';
 
 @Component({
@@ -10,4 +10,10 @@ import { Todo } from '../../Todo';
 })
 export class TodoItem {
   @Input() todo!: Todo;
+  @Output() todoDelete: EventEmitter<Todo> = new EventEmitter();
+
+  onClick(todo: Todo) {
+    this.todoDelete.emit(todo);
+    console.log('onclick has been triggered');
+  }
 }
