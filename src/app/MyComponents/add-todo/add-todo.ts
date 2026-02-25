@@ -1,9 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Todo } from '../../Todo';
 
 @Component({
   selector: 'app-add-todo',
-  imports: [],
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './add-todo.html',
-  styleUrl: './add-todo.css',
+  styleUrls: ['./add-todo.css'],
 })
-export class AddTodo {}
+export class AddTodo {
+  title = '';
+  desc = '';
+  @Output() todoAdd: EventEmitter<Todo> = new EventEmitter();
+
+  onSubmit() {
+    const todo = {
+      sno: 9,
+      title: this.title,
+      desc: this.desc,
+      active: true,
+    };
+    this.todoAdd.emit(todo);
+  }
+}
