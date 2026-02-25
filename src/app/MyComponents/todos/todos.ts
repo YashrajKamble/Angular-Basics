@@ -12,39 +12,30 @@ import { AddTodo } from '../add-todo/add-todo';
   styleUrls: ['./todos.css'],
 })
 export class Todos {
+  localItem: string | null;
   todos: Todo[];
 
   constructor() {
-    this.todos = [
-      {
-        sno: 1,
-        title: 'this is title 1',
-        desc: 'description of todo 1',
-        active: false,
-      },
-      {
-        sno: 2,
-        title: 'this is title 2',
-        desc: 'description of todo 2',
-        active: true,
-      },
-      {
-        sno: 3,
-        title: 'this is title 3',
-        desc: 'description of todo 3',
-        active: true,
-      },
-    ];
+    this.localItem = localStorage.getItem('todos');
+    if (this.localItem == null) {
+      this.todos = [];
+    } else {
+      this.todos = JSON.parse(this.localItem);
+    }
   }
 
   deleteTodo(todo: Todo) {
     console.log(todo);
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1);
+    localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 
   addTodo(todo: Todo) {
     console.log(todo);
     this.todos.push(todo);
+    localStorage.setItem('todos', JSON.stringify(this.todos));
   }
+
+  
 }
